@@ -24,9 +24,19 @@ namespace Umbraco.Web.PublishedContentModels
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Parent(IPublishedContent content)
-			: base(content)
-		{ }
+	    private MbPocoPoc.Core.Parent proxy;
+
+	    public MbPocoPoc.Core.Parent Proxy
+	    {
+            get { return proxy; }
+	    }
+
+	    public Parent(IPublishedContent content)
+	        : base(content)
+	    {
+	        proxy = new MbPocoPoc.Core.Parent();
+	        proxy.RichText = RichText;
+	    }
 
 #pragma warning disable 0109 // new is redundant
 		public new static PublishedContentType GetModelContentType()

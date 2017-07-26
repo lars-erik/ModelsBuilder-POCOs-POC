@@ -24,12 +24,21 @@ namespace Umbraco.Web.PublishedContentModels
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Child(IPublishedContent content)
-			: base(content)
-		{ }
+	    private MbPocoPoc.Core.Child proxy;
+
+	    public MbPocoPoc.Core.Child Proxy
+	    {
+	        get { return proxy; }
+	    }
+
+        public Child(IPublishedContent content) : base(content)
+	    {
+	        proxy = new MbPocoPoc.Core.Child();
+	        proxy.Checkboxes = Checkboxes;
+	    }
 
 #pragma warning disable 0109 // new is redundant
-		public new static PublishedContentType GetModelContentType()
+        public new static PublishedContentType GetModelContentType()
 		{
 			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
 		}
