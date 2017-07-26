@@ -14,5 +14,7 @@ namespace MbPocoPoc.Core
         }
 
         public IHtmlString RichText { get; set; }
+
+        public IEnumerable<Child> PocoChildren { get; set; }
     }
 }

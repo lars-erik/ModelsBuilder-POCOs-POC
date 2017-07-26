@@ -5,3 +5,9 @@
 
 <p>@Model.RichText</p>
 
+<ul>
+@foreach (var child in Model.PocoChildren)
+{
+    <li>@child.Name</li>
+}
+</ul>

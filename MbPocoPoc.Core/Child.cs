@@ -8,6 +8,7 @@ namespace MbPocoPoc.Core
 {
     public class Child
     {
+        public string Name { get; set; }
         public IEnumerable<string> Checkboxes { get; set; }
     }
 }

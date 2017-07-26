@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 using Umbraco.Core.Models;
@@ -40,7 +41,16 @@ namespace Umbraco.Web.PublishedContentModels
 	        : base(content)
 	    {
 	        proxy = new MbPocoPoc.Core.Parent();
-	        proxy.RichText = RichText;
+	        // Not mapping name - see Child - figure out whether default props are there?
+
+            proxy.RichText = RichText;
+
+            // This would have to be configured like with for example AutoMapper
+            // Probably need to use aliases since generated types might not exist at compile time
+            proxy.PocoChildren = this.Children("Child")
+	            .Cast<MbPocoPoc.Core.IHaveProxy>()
+	            .Select(c => c.Proxy)
+	            .Cast<MbPocoPoc.Core.Child>();
 	    }
 
 #pragma warning disable 0109 // new is redundant
