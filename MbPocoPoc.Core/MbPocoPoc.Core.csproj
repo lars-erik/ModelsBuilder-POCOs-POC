@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Child.cs" />
+    <Compile Include="IHaveProxy.cs" />
     <Compile Include="Parent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -17,7 +17,7 @@ namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>Parent</summary>
 	[PublishedContentModel("parent")]
-	public partial class Parent : PublishedContentModel
+	public partial class Parent : PublishedContentModel, MbPocoPoc.Core.IHaveProxy
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "parent";
@@ -25,6 +25,11 @@ namespace Umbraco.Web.PublishedContentModels
 #pragma warning restore 0109
 
 	    private MbPocoPoc.Core.Parent proxy;
+
+	    object MbPocoPoc.Core.IHaveProxy.Proxy
+	    {
+            get { return Proxy; }
+	    }
 
 	    public MbPocoPoc.Core.Parent Proxy
 	    {
